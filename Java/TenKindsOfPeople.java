@@ -1,7 +1,7 @@
-/* Lol you thought */
+// 10 Kinds of People
 import java.util.*;
 
-public class BinaryMap {
+public class TenKindsOfPeople {
     static char[][] bMap;
     static int[] unions;
     static int columns;
