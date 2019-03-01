@@ -12,8 +12,7 @@ def calc(decksLeft, target, cards):
 			val+=1				
 	else:
 		poss = 1
-	mem[decksLeft][target] = poss
-	return poss
+	mem[decksLeft][target] = poss return poss
 
 def main():
 	n,k,t = raw_input().split()
