@@ -1,23 +1,39 @@
 #include <iostream>
-#include <unordered_set>
+#include <bitset>
 using namespace std;
 
+void fastscan(int &number) {
+    bool negative = false;
+    register int c;
+    number = 0;
+    c = getchar();
+    if(c=='-') {
+        negative = true;
+        c = getchar();
+    }
+    for(; c>47 && c <58; c=getchar()) number = number * 10 + c - 48;
+    if(negative) number *= -1;
+}
+
 int main() {
-	int a,b;
-	cin >> a >> b;
-	while(a||b){
-		unordered_set<int> seen;
-		int t, count = 0;
-		while(a--) {
-			cin >> t;
-			seen.insert(t);
-		}	
-		while(b--) {
-			cin >> t;
-			if(seen.find(t)!=seen.end()) count++;
-		}
-		cout << count << "\n";
-		cin >> a >> b;
-	}
-	return 0;
+    int a,b;
+    fastscan(a);
+    fastscan(b);
+    static bitset<10000001> seen;
+    while(a||b){
+        int t, count = 0;
+        while(a--) {
+            fastscan(t);
+            seen.set(t);
+        }   
+        while(b--) {
+            fastscan(t);
+            if(seen.test(t)) count++;
+        }
+        cout << count << "\n";
+        fastscan(a);
+        fastscan(b);
+        seen.reset();
+    }
+    return 0;
 }
