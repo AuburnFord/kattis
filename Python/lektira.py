@@ -1,19 +1,17 @@
-#[mobitel]
-#[0123456]
-
-def rev(word, one, two):
-	return word[one::-1] + word[two:one:-1] + word[:two:-1]
-	
 def main():
-	string = input()
-	pos_loc = len(string) - 1
-	cur = "z"*len(string)
-	for i in range(0, pos_loc-1):
-		for j in range(i + 1, pos_loc):
-			reved = rev(string,i,j)
-			if reved < cur:
-				cur = reved
-	print(cur)
-	
+	word = input()
+	best = "z"*len(word)
+	a = 0
+	b = a + 1
+	while a < len(word)-2:
+		while b < len(word)-1:
+			new_word = word[a::-1] + word[b:a:-1] + word[-1:b:-1]
+			if new_word < best:
+				best = new_word
+			b += 1
+		a += 1
+		b = a + 1
+	print(best)	
+
 if __name__ == "__main__":
 	main()
