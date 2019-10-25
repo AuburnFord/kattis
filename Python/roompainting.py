@@ -1,3 +1,5 @@
+from sys import stdin
+
 sizes = []
 
 def minWaste(req):
@@ -15,12 +17,13 @@ def minWaste(req):
 
 def main():
 	c,r = [int(x) for x in input().split()]
+	nums = stdin.readlines()
 	for x in range(c):
-		sizes.append(int(input()))
+		sizes.append(int(nums[x]))
 	sizes.sort()
 	waste = 0
-	for x in range(r):
-		waste += minWaste(int(input()))
+	for x in range(c,c+r):
+		waste += minWaste(int(nums[x]))
 	print(waste)
 
 if __name__ == "__main__":
